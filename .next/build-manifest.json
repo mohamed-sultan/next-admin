@@ -1,53 +1,37 @@
 {
-  "devFiles": [],
+  "devFiles": [
+    "static/development/dll/dll_11fbb1faa946535a5071.js"
+  ],
   "pages": {
     "/": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ],
     "/_app": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
-    ],
-    "/add-user": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
     "/index": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ],
-    "/play": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
+    "/login": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ],
-    "/statics": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
-    ],
-    "/users": [
-      "static/runtime/webpack-3b8c5d833895a36694df.js",
-      "static/css/commons.288b7832.chunk.css",
-      "static/chunks/commons.d15cd70487d2e93fad24.js",
-      "static/runtime/main-546f42912644574021ed.js"
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
