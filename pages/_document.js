@@ -1,5 +1,7 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import "../ styles/styles.scss";
+//import "bootstrap/dist/css/bootstrap.min.css";
+
 export default class MyDocument extends Document {
   render() {
     return (

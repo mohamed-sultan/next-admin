@@ -1,3 +1,5 @@
 {
-  "type": "static"
+  "name": "<YOUR-SITE-NAME>",
+  "alias": "<YOUR-ALIAS>",
+  "dotenv": true
 }
