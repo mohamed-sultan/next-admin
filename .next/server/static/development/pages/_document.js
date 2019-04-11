@@ -2234,10 +2234,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "redux");
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers */ "./redux/reducers/index.js");
 
 
 
 var SET_CLIENT_STATE = "SET_CLIENT_STATE";
+
 var reducer = function reducer(state, _ref) {
   var type = _ref.type,
       payload = _ref.payload;
@@ -2270,17 +2272,17 @@ var makeStore = function makeStore(initialState, _ref2) {
     // we need it only on client side
     var _require = __webpack_require__(/*! redux-persist */ "redux-persist"),
         persistStore = _require.persistStore,
-        persistReducer = _require.persistReducer;
+        persistCombineReducers = _require.persistCombineReducers;
 
     var storage = __webpack_require__(/*! redux-persist/lib/storage */ "redux-persist/lib/storage").default;
 
     var persistConfig = {
       key: "nextjs",
-      whitelist: ["fromClient"],
+      whitelist: ["fromClient", "about", "rules", "users"],
       // make sure it does not clash with server keys
       storage: storage
     };
-    var persistedReducer = persistReducer(persistConfig, reducer);
+    var persistedReducer = persistCombineReducers(persistConfig, _reducers__WEBPACK_IMPORTED_MODULE_3__["default"]);
     var store = makeConfiguredStore(persistedReducer, initialState);
     store.__persistor = persistStore(store); // Nasty hack
 
@@ -2293,6 +2295,155 @@ var setClientState = function setClientState(clientState) {
     payload: clientState
   };
 };
+
+/***/ }),
+
+/***/ "./redux/reducers/About.js":
+/*!*********************************!*\
+  !*** ./redux/reducers/About.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types/index.js");
+
+
+var initialState = {
+  about: "تطبيق حالا"
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+  var _ref = arguments.length > 1 ? arguments[1] : undefined,
+      type = _ref.type,
+      payload = _ref.payload;
+
+  switch (type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["ABOUT"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        about: payload
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./redux/reducers/Rules.js":
+/*!*********************************!*\
+  !*** ./redux/reducers/Rules.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types/index.js");
+
+
+var initialState = {
+  rules: "شروط التطبيق"
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+  var _ref = arguments.length > 1 ? arguments[1] : undefined,
+      type = _ref.type,
+      payload = _ref.payload;
+
+  switch (type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["RULES"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        rules: payload
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./redux/reducers/index.js":
+/*!*********************************!*\
+  !*** ./redux/reducers/index.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _About__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./About */ "./redux/reducers/About.js");
+/* harmony import */ var _Rules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Rules */ "./redux/reducers/Rules.js");
+/* harmony import */ var _users__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./users */ "./redux/reducers/users.js");
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  about: _About__WEBPACK_IMPORTED_MODULE_0__["default"],
+  rules: _Rules__WEBPACK_IMPORTED_MODULE_1__["default"],
+  users: _users__WEBPACK_IMPORTED_MODULE_2__["default"]
+});
+
+/***/ }),
+
+/***/ "./redux/reducers/users.js":
+/*!*********************************!*\
+  !*** ./redux/reducers/users.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types/index.js");
+
+
+var initialState = {
+  users: []
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+  var _ref = arguments.length > 1 ? arguments[1] : undefined,
+      type = _ref.type,
+      payload = _ref.payload;
+
+  switch (type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["USERS"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        users: payload
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./redux/types/index.js":
+/*!******************************!*\
+  !*** ./redux/types/index.js ***!
+  \******************************/
+/*! exports provided: ABOUT, RULES, USERS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ABOUT", function() { return ABOUT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RULES", function() { return RULES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USERS", function() { return USERS; });
+var ABOUT = "ABOUTTHEAPP";
+var RULES = "RULES";
+var USERS = "USERS";
 
 /***/ }),
 

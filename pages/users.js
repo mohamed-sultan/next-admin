@@ -1,7 +1,42 @@
 import AdminLayoutHoc from "../components/Layout/AdminLayoutHoc";
 import Link from "next/link";
+import { connect } from "react-redux";
 
-export default class Users extends React.Component {
+import { getUsers } from "../api";
+import { GETUSERSACTION } from "../redux/actions/getUsers";
+
+class Users extends React.Component {
+  componentDidMount() {
+    this._handleUsers();
+  }
+  _handleUsers = async () => {
+    const users = await getUsers();
+
+    this.props.GETUSERSACTION(users);
+  };
+  _showUsers = () => {
+    return this.props.users.map(({ email, name }, index) => (
+      <tr index={index}>
+        <td>{index + 1}</td>
+        <td>{name}</td>
+        <td>11-7-2014</td>
+        <td>
+          <span className="badge bg-success">Approved</span>
+        </td>
+        <td>
+          This user was approved by <b>Anil</b>
+        </td>
+        <td className="align-middle">
+          <div className="progress progress-xs">
+            <div
+              className="progress-bar bg-success"
+              style={{ width: "100%" }}
+            />
+          </div>
+        </td>
+      </tr>
+    ));
+  };
   render() {
     return (
       <AdminLayoutHoc
@@ -50,44 +85,8 @@ export default class Users extends React.Component {
                       <th>Reason</th>
                       <th>Progress</th>
                     </tr>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td>
-                        <span className="badge bg-success">Approved</span>
-                      </td>
-                      <td>
-                        This user was approved by <b>Anil</b>
-                      </td>
-                      <td className="align-middle">
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar bg-success"
-                            style={{ width: "100%" }}
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td>
-                        <span className="badge bg-danger">Denied</span>
-                      </td>
-                      <td>
-                        This user was declined by <b>Anil</b>
-                      </td>
-                      <td className="align-middle">
-                        <div className="progress progress-xs">
-                          <div
-                            className="progress-bar bg-danger"
-                            style={{ width: "25%" }}
-                          />
-                        </div>
-                      </td>
-                    </tr>
+
+                    {this._showUsers()}
                   </tbody>
                 </table>
               </div>
@@ -98,3 +97,14 @@ export default class Users extends React.Component {
     );
   }
 }
+
+const mapState = state => {
+  return {
+    ...state.users
+  };
+};
+
+export default connect(
+  mapState,
+  { GETUSERSACTION }
+)(Users);

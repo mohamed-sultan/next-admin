@@ -2,6 +2,7 @@ import logger from "redux-logger";
 import { applyMiddleware, createStore } from "redux";
 
 const SET_CLIENT_STATE = "SET_CLIENT_STATE";
+import All from "./reducers";
 
 export const reducer = (state, { type, payload }) => {
   if (type === SET_CLIENT_STATE) {
@@ -23,16 +24,16 @@ export const makeStore = (initialState, { isServer, req, debug, storeKey }) => {
     return makeConfiguredStore(reducer, initialState);
   } else {
     // we need it only on client side
-    const { persistStore, persistReducer } = require("redux-persist");
+    const { persistStore, persistCombineReducers } = require("redux-persist");
     const storage = require("redux-persist/lib/storage").default;
 
     const persistConfig = {
       key: "nextjs",
-      whitelist: ["fromClient"], // make sure it does not clash with server keys
+      whitelist: ["fromClient", "about", "rules", "users"], // make sure it does not clash with server keys
       storage
     };
 
-    const persistedReducer = persistReducer(persistConfig, reducer);
+    const persistedReducer = persistCombineReducers(persistConfig, All);
     const store = makeConfiguredStore(persistedReducer, initialState);
 
     store.__persistor = persistStore(store); // Nasty hack

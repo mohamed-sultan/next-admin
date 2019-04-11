@@ -13,7 +13,7 @@ class login extends Component {
   };
   _handleLogin = e => {
     e.preventDefault();
-    if (this.state.email !== "test@test.co") {
+    if (this.state.email !== "test@test.com") {
       this.setState({ showError: true, message: "الايميل غلط او الباسورد" });
       setTimeout(() => {
         this.setState({ showError: false });
@@ -22,108 +22,109 @@ class login extends Component {
     console.log("====================================");
     console.log(this.props);
     console.log("====================================");
-    this.props.url.replace("/index");
+    this.props.router.push("/main");
   };
   render() {
     return (
       <React.Fragment>
         <div
-          className=" bg-info"
           style={{
-            width: "25vw",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginTop: "10%",
-            padding: "50px"
+            background: ` rgba(23, 160, 186, 0.9)`,
+            width: "100vw",
+            height: "100vh",
+            paddingTop: "10%"
           }}
         >
-          <form>
-            <div className="form-group">
-              <label
-                style={{
-                  float: "right"
-                }}
-                htmlFor="exampleInputEmail1"
-              >
-                البريد الالكترونى
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                onChange={e => this.setState({ email: e.target.value })}
-                value={this.state.email}
-              />
-              <small
-                style={{ color: "black" }}
-                id="emailHelp"
-                className="form-text text-muted "
-              >
-                We'll never share your email with anyone else.
-              </small>
-            </div>
-            <div className="form-group">
-              <label
-                style={{
-                  float: "right"
-                }}
-                htmlFor="exampleInputPassword1 "
-              >
-                كلمه المرور
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                onChange={e => this.setState({ password: e.target.value })}
-                value={this.state.password}
-              />
-            </div>
-            <div
-              style={{ marginTop: "20px", float: "right" }}
-              className="form-check"
-            >
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" htmlFor="exampleCheck1">
-                احفظ بياناتى
-              </label>
-            </div>
-            <button
-              style={{
-                width: "100%",
-                marginTop: "30px",
-                marginBottom: "10px",
-                marginLeft: "auto",
-                marginRight: "auto"
-              }}
-              type="submit"
-              className="btn btn-primary"
-              onClick={this._handleLogin}
-            >
-              تسجيل الدخول
-            </button>
-          </form>
-        </div>
-        {this.state.showError && (
           <div
+            className=" bg-info"
             style={{
               width: "25vw",
-
-              margin: "auto",
-              marginTop: "10px",
-              textAlign: "center"
+              marginLeft: "auto",
+              marginRight: "auto",
+              padding: "50px"
             }}
           >
-            <Alert color="danger">{this.state.message}</Alert>
+            <form>
+              <div className="form-group">
+                <label
+                  style={{
+                    float: "right"
+                  }}
+                  htmlFor="exampleInputEmail1"
+                >
+                  البريد الالكترونى
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  onChange={e => this.setState({ email: e.target.value })}
+                  value={this.state.email}
+                />
+              </div>
+              <div className="form-group">
+                <label
+                  style={{
+                    float: "right"
+                  }}
+                  htmlFor="exampleInputPassword1 "
+                >
+                  كلمه المرور
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  onChange={e => this.setState({ password: e.target.value })}
+                  value={this.state.password}
+                />
+              </div>
+              <div
+                style={{ marginTop: "20px", float: "right" }}
+                className="form-check"
+              >
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label className="form-check-label" htmlFor="exampleCheck1">
+                  احفظ بياناتى
+                </label>
+              </div>
+              <button
+                style={{
+                  width: "100%",
+                  marginTop: "30px",
+                  marginBottom: "10px",
+                  marginLeft: "auto",
+                  marginRight: "auto"
+                }}
+                type="submit"
+                className="btn btn-primary"
+                onClick={this._handleLogin}
+              >
+                تسجيل الدخول
+              </button>
+            </form>
           </div>
-        )}
+          {this.state.showError && (
+            <div
+              style={{
+                width: "25vw",
+
+                margin: "auto",
+                marginTop: "10px",
+                textAlign: "center"
+              }}
+            >
+              <Alert color="danger">{this.state.message}</Alert>
+            </div>
+          )}
+        </div>
       </React.Fragment>
     );
   }

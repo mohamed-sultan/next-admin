@@ -91,6 +91,46 @@ class AdminSidebar extends React.Component {
                   </li>
                 </ul>
               </li>
+
+              <li className="nav-item">
+                <Link href="/rules">
+                  <a
+                    className={[
+                      "nav-link",
+                      pathname === "/rules" ? "active" : ""
+                    ].join(" ")}
+                  >
+                    <i class="fa fa-pencil-square-o p-2" aria-hidden="true" />
+                    <p style={{ textAlign: "right" }}> الشروط والاحاكم </p>
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/about">
+                  <a
+                    className={[
+                      "nav-link",
+                      pathname === "/about" ? "active" : ""
+                    ].join(" ")}
+                  >
+                    <i class="fa fa-check-circle p-2" aria-hidden="true" />
+                    <p style={{ textAlign: "right" }}> عن التطبيق </p>
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/logout">
+                  <a
+                    className={[
+                      "nav-link",
+                      pathname === "/logout" ? "active" : ""
+                    ].join(" ")}
+                  >
+                    <i class="fa fa-sign-out p-2" aria-hidden="true" />
+                    <p style={{ textAlign: "right" }}> تسجيل الخروج </p>
+                  </a>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
