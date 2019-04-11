@@ -1,15 +1,47 @@
-import { createStore } from "redux";
+import logger from "redux-logger";
+import { applyMiddleware, createStore } from "redux";
 
-import reducer from "./reducers";
+const SET_CLIENT_STATE = "SET_CLIENT_STATE";
 
-/**
- * @param {object} initialState
- * @param {boolean} options.isServer indicates whether it is a server side or client side
- * @param {Request} options.req NodeJS Request object (not set when client applies initialState from server)
- * @param {Request} options.res NodeJS Request object (not set when client applies initialState from server)
- * @param {boolean} options.debug User-defined debug mode param
- * @param {string} options.storeKey This key will be used to preserve store in global namespace for safe HMR
- */
-export const makeStore = (initialState, options) => {
-  return createStore(reducer, initialState);
+export const reducer = (state, { type, payload }) => {
+  if (type === SET_CLIENT_STATE) {
+    return {
+      ...state,
+      fromClient: payload
+    };
+  }
+  return state;
 };
+
+const makeConfiguredStore = (reducer, initialState) =>
+  createStore(reducer, initialState, applyMiddleware(logger));
+
+export const makeStore = (initialState, { isServer, req, debug, storeKey }) => {
+  if (isServer) {
+    initialState = initialState || { fromServer: "foo" };
+
+    return makeConfiguredStore(reducer, initialState);
+  } else {
+    // we need it only on client side
+    const { persistStore, persistReducer } = require("redux-persist");
+    const storage = require("redux-persist/lib/storage").default;
+
+    const persistConfig = {
+      key: "nextjs",
+      whitelist: ["fromClient"], // make sure it does not clash with server keys
+      storage
+    };
+
+    const persistedReducer = persistReducer(persistConfig, reducer);
+    const store = makeConfiguredStore(persistedReducer, initialState);
+
+    store.__persistor = persistStore(store); // Nasty hack
+
+    return store;
+  }
+};
+
+export const setClientState = clientState => ({
+  type: SET_CLIENT_STATE,
+  payload: clientState
+});
