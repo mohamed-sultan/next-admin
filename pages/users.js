@@ -1,21 +1,31 @@
 import AdminLayoutHoc from "../components/Layout/AdminLayoutHoc";
 import Link from "next/link";
 import { connect } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
+import "../ styles/styles.scss";
 import { getUsers } from "../api";
 import { GETUSERSACTION } from "../redux/actions/getUsers";
+import localization from "../localization/index";
 
 class Users extends React.Component {
+  _handelDeleteUser = id => {
+    const { GETUSERSACTION, users } = this.props;
+    GETUSERSACTION(users.filter(t => t._id !== id));
+    toast.success(localization.userDeleted, {
+      position: toast.POSITION.TOP_CENTER,
+      className: "notify"
+    });
+  };
   componentDidMount() {
     this._handleUsers();
   }
   _handleUsers = async () => {
     const users = await getUsers();
-
     this.props.GETUSERSACTION(users);
   };
   _showUsers = () => {
-    return this.props.users.map(({ email, name }, index) => (
+    return this.props.users.map(({ email, name, _id }, index) => (
       <tr index={index}>
         <td>{index + 1}</td>
         <td>{name}</td>
@@ -26,13 +36,14 @@ class Users extends React.Component {
         <td>
           This user was approved by <b>Anil</b>
         </td>
-        <td className="align-middle">
-          <div className="progress progress-xs">
-            <div
-              className="progress-bar bg-success"
-              style={{ width: "100%" }}
-            />
-          </div>
+        <td
+          className="align-middle"
+          onClick={() => this._handelDeleteUser(_id)}
+        >
+          <i
+            className="fa fa-trash bg-success text-primary p-2 ml-4"
+            aria-hidden="false"
+          />
         </td>
       </tr>
     ));
@@ -50,6 +61,8 @@ class Users extends React.Component {
         }
         url={this.props.url}
       >
+        <ToastContainer />
+
         <div className="row">
           <div className="col-12">
             <div className="card">
@@ -82,8 +95,8 @@ class Users extends React.Component {
                       <th>User</th>
                       <th>Date</th>
                       <th>Status</th>
-                      <th>Reason</th>
-                      <th>Progress</th>
+                      <th className="pl-5">Reason</th>
+                      <th>Delete User</th>
                     </tr>
 
                     {this._showUsers()}

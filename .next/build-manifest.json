@@ -7,6 +7,7 @@
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
+      "static/css/static/development/pages/index.js.chunk.css",
       "static/runtime/main.js"
     ],
     "/_app": [
@@ -17,16 +18,47 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/about": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/css/static/development/pages/about.js.chunk.css",
+      "static/runtime/main.js"
+    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
+      "static/css/static/development/pages/index.js.chunk.css",
       "static/runtime/main.js"
     ],
-    "/statics": [
+    "/logout": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/main": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
+      "static/css/static/development/pages/main.js.chunk.css",
+      "static/runtime/main.js"
+    ],
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/rules": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/css/static/development/pages/rules.js.chunk.css",
+      "static/runtime/main.js"
+    ],
+    "/users": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/css/static/development/pages/users.js.chunk.css",
       "static/runtime/main.js"
     ]
   }

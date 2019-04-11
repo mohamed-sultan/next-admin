@@ -4,5 +4,6 @@ export default {
   about: "عن التطبيق",
   logout: "تسجيل الخروج",
   home: "الرئيسيه",
-  users: "الاعضاء"
+  users: "الاعضاء",
+  userDeleted: "تم مسح العضو بنجاح"
 };

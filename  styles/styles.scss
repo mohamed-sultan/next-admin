@@ -7,6 +7,7 @@
 //$blue:    purple; // Override variables here to style accordingly
 @import "~bootstrap/scss/bootstrap";
 @import "~admin-lte/build/scss/AdminLTE-raw.scss";
+@import "~react-toastify/dist/ReactToastify.css";
 
 $color: blue;
 h1 {
@@ -29,4 +30,8 @@ h1 {
   border: none;
   padding: 10px;
   max-lines: 5;
+}
+
+.notify {
+  text-align: center;
 }

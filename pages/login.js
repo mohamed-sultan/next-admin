@@ -3,6 +3,9 @@ import "../ styles/styles.scss";
 import React, { Component } from "react";
 import { Alert } from "reactstrap";
 import { withRouter } from "next/router";
+import { connect } from "react-redux";
+
+import { LOGINACTION } from "../redux/actions/login";
 
 class login extends Component {
   state = {
@@ -12,6 +15,7 @@ class login extends Component {
     message: ""
   };
   _handleLogin = e => {
+    const { email, password } = this.state;
     e.preventDefault();
     if (this.state.email !== "test@test.com") {
       this.setState({ showError: true, message: "الايميل غلط او الباسورد" });
@@ -19,9 +23,7 @@ class login extends Component {
         this.setState({ showError: false });
       }, 2000);
     }
-    console.log("====================================");
-    console.log(this.props);
-    console.log("====================================");
+    this.props.LOGINACTION({ email, password });
     this.props.router.push("/main");
   };
   render() {
@@ -130,4 +132,13 @@ class login extends Component {
   }
 }
 
-export default withRouter(login);
+const mapState = state => {
+  return {
+    ...state.user
+  };
+};
+
+export default connect(
+  mapState,
+  { LOGINACTION }
+)(withRouter(login));

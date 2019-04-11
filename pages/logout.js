@@ -1,13 +1,24 @@
 import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "next/router";
 
-export class logout extends PureComponent {
+import { LOGOutACTION } from "../redux/actions/logOut";
+
+class logout extends React.Component {
+  constructor(props) {
+    super(props);
+    this._handleLogOut();
+  }
+  _handleLogOut = () => {
+    this.props.LOGOutACTION();
+    this.props.router.push("/index");
+  };
   render() {
-    return (
-      <div>
-        <h1>logout screen </h1>
-      </div>
-    );
+    return null;
   }
 }
 
-export default logout;
+export default connect(
+  null,
+  { LOGOutACTION }
+)(withRouter(logout));

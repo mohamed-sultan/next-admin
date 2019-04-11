@@ -29,7 +29,7 @@ export const makeStore = (initialState, { isServer, req, debug, storeKey }) => {
 
     const persistConfig = {
       key: "nextjs",
-      whitelist: ["fromClient", "about", "rules", "users"], // make sure it does not clash with server keys
+      whitelist: ["fromClient", "about", "rules", "users", "user"], // make sure it does not clash with server keys
       storage
     };
 
