@@ -1,9 +1,16 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import "../ styles/styles.scss";
 //import "bootstrap/dist/css/bootstrap.min.css";
+// import { Provider } from "react-redux";
+// import { persistStore } from "redux-persist";
+// import { PersistGate } from "redux-persist/es/integration/react";
+
+import store from "../redux";
 
 export default class MyDocument extends Document {
   render() {
+    //const persistor = persistStore(store);
+
     return (
       <html>
         <Head>
@@ -22,6 +29,9 @@ export default class MyDocument extends Document {
         <body className="sidebar-mini">
           <Main />
           <NextScript />
+          {/* <Provider store={store}>
+            <PersistGate persistor={persistor} />
+          </Provider> */}
         </body>
       </html>
     );

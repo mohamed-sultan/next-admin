@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2076,6 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../ styles/styles.scss */ "./ styles/styles.scss");
 /* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../redux */ "./redux/index.js");
 
 
 
@@ -2084,6 +2085,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
  //import "bootstrap/dist/css/bootstrap.min.css";
+// import { Provider } from "react-redux";
+// import { persistStore } from "redux-persist";
+// import { PersistGate } from "redux-persist/es/integration/react";
+
+
 
 var MyDocument =
 /*#__PURE__*/
@@ -2099,6 +2105,7 @@ function (_Document) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(MyDocument, [{
     key: "render",
     value: function render() {
+      //const persistor = persistStore(store);
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("html", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(next_document__WEBPACK_IMPORTED_MODULE_6__["Head"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("title", null, "My Next.js Project"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("link", {
         rel: "stylesheet",
         href: "/_next/static/style.css"
@@ -2126,7 +2133,57 @@ function (_Document) {
 
 /***/ }),
 
-/***/ 0:
+/***/ "./redux/index.js":
+/*!************************!*\
+  !*** ./redux/index.js ***!
+  \************************/
+/*! exports provided: makeStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makeStore", function() { return makeStore; });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./redux/reducers/index.js");
+
+
+/**
+ * @param {object} initialState
+ * @param {boolean} options.isServer indicates whether it is a server side or client side
+ * @param {Request} options.req NodeJS Request object (not set when client applies initialState from server)
+ * @param {Request} options.res NodeJS Request object (not set when client applies initialState from server)
+ * @param {boolean} options.debug User-defined debug mode param
+ * @param {string} options.storeKey This key will be used to preserve store in global namespace for safe HMR
+ */
+
+var makeStore = function makeStore(initialState, options) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_1__["default"], initialState);
+};
+
+/***/ }),
+
+/***/ "./redux/reducers/index.js":
+/*!*********************************!*\
+  !*** ./redux/reducers/index.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  main: function main() {
+    return [];
+  }
+}));
+
+/***/ }),
+
+/***/ 1:
 /*!*********************************************!*\
   !*** multi private-next-pages/_document.js ***!
   \*********************************************/
@@ -2300,6 +2357,17 @@ module.exports = require("prop-types");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
 
 /***/ })
 
