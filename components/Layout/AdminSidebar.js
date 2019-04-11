@@ -1,7 +1,26 @@
 import Link from "next/link";
 import { withRouter } from "next/router";
 
+import SIdeBarContent from "./SideMenueContent";
+
 class AdminSidebar extends React.Component {
+  _renderSideBarCOntent = () => {
+    const { pathname } = this.props.router;
+    return SIdeBarContent.map(({ name, icon, href }, index) => (
+      <li key={index} className="nav-item">
+        <Link href={href}>
+          <a
+            className={["nav-link", pathname === href ? "active" : ""].join(
+              " "
+            )}
+          >
+            <i className={icon} />
+            <p style={{ textAlign: "right" }}>{name}</p>
+          </a>
+        </Link>
+      </li>
+    ));
+  };
   render() {
     const { pathname } = this.props.router;
     return (
@@ -26,7 +45,8 @@ class AdminSidebar extends React.Component {
               role="menu"
               data-accordion="false"
             >
-              <li className="nav-item">
+              {this._renderSideBarCOntent()}
+              {/* <li className="nav-item">
                 <Link href="/">
                   <a
                     className={[
@@ -130,7 +150,7 @@ class AdminSidebar extends React.Component {
                     <p style={{ textAlign: "right" }}> تسجيل الخروج </p>
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
